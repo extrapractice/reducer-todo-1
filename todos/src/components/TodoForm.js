@@ -7,12 +7,17 @@ export default function TodoForm({ addTodo, clearCompleted }) {
 		addTodo(input);
 		setInput('');
 	};
+
+	const clearCompletedHandler = (e) => {
+		e.preventDefault();
+		clearCompleted();
+	};
 	return (
 		<div>
 			<form onSubmit={(e) => submitHandler(e)}>
 				<input type="text" name="todo" value={input} onChange={(e) => setInput(e.target.value)} />
 				<button type="submit">Submit</button>
-				<button onClick={() => clearCompleted()}>Clear Completed</button>
+				<button onClick={(e) => clearCompletedHandler(e)}>Clear Completed</button>
 			</form>
 		</div>
 	);
